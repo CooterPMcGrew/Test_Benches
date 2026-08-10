@@ -1,0 +1,50 @@
+scope: Siglent Technologies,SDS1104X-U,SDSAHBAX5R1440,2.1.1.1.5R5
+f=    200.0 Hz  |Z|=   7.287  ang=  +1.8 deg  R=  7.283  L=  187.19 uH  emfC=0.0557 @ -19.9 deg
+f=    252.0 Hz  |Z|=   7.297  ang=  +2.3 deg  R=  7.291  L=  184.60 uH  emfC=0.0577 @ -24.4 deg
+f=    317.0 Hz  |Z|=   7.323  ang=  +2.8 deg  R=  7.314  L=  180.26 uH  emfC=0.0584 @ -30.8 deg
+f=    399.0 Hz  |Z|=   7.386  ang=  +3.5 deg  R=  7.372  L=  178.53 uH  emfC=0.0536 @ -39.9 deg
+f=    502.0 Hz  |Z|=   7.422  ang=  +4.2 deg  R=  7.402  L=  172.96 uH  emfC=0.0543 @ -49.1 deg
+f=    632.1 Hz  |Z|=   7.486  ang=  +5.2 deg  R=  7.456  L=  169.52 uH  emfC=0.0559 @ -62.1 deg
+f=    795.9 Hz  |Z|=   7.567  ang=  +6.1 deg  R=  7.524  L=  161.77 uH  emfC=0.0605 @ -69.3 deg
+f=   1000.0 Hz  |Z|=   7.674  ang=  +7.2 deg  R=  7.614  L=  153.03 uH  emfC=0.0641 @ -80.4 deg
+f=   1260.0 Hz  |Z|=   7.835  ang=  +8.2 deg  R=  7.755  L=  140.95 uH  emfC=0.0662 @ -95.4 deg
+f=   1590.0 Hz  |Z|=   8.048  ang=  +9.0 deg  R=  7.948  L=  126.56 uH  emfC=0.0704 @ -106.4 deg
+f=   2000.0 Hz  |Z|=   8.268  ang=  +9.6 deg  R=  8.151  L=  110.23 uH  emfC=0.0737 @ -119.0 deg
+f=   2520.0 Hz  |Z|=   8.491  ang= +10.1 deg  R=  8.360  L=   93.85 uH  emfC=0.0764 @ -131.4 deg
+f=   3169.9 Hz  |Z|=   8.710  ang= +10.4 deg  R=  8.567  L=   79.08 uH  emfC=0.0810 @ -142.5 deg
+f=   3980.0 Hz  |Z|=   8.910  ang= +10.8 deg  R=  8.752  L=   66.78 uH  emfC=0.0816 @ -151.5 deg
+f=   5020.0 Hz  |Z|=   9.039  ang= +11.6 deg  R=  8.855  L=   57.61 uH  emfC=0.0829 @ -157.4 deg
+f=   6310.0 Hz  |Z|=   9.186  ang= +12.6 deg  R=  8.964  L=   50.64 uH  emfC=0.0835 @ -163.5 deg
+f=   7950.1 Hz  |Z|=   9.304  ang= +14.2 deg  R=  9.018  L=   45.82 uH  emfC=0.0842 @ -169.6 deg
+f=  10000.0 Hz  |Z|=   9.429  ang= +16.6 deg  R=  9.038  L=   42.76 uH  emfC=0.0848 @ -174.7 deg
+f=  12599.9 Hz  |Z|=   9.624  ang= +19.5 deg  R=  9.072  L=   40.60 uH  emfC=0.0832 @ -179.8 deg
+f=  15900.0 Hz  |Z|=   9.909  ang= +23.4 deg  R=  9.096  L=   39.34 uH  emfC=0.0831 @ +175.6 deg
+f=  20000.0 Hz  |Z|=  10.304  ang= +27.9 deg  R=  9.103  L=   38.42 uH  emfC=0.0808 @ +169.4 deg
+f=  25099.9 Hz  |Z|=  10.904  ang= +33.2 deg  R=  9.121  L=   37.89 uH  emfC=0.0780 @ +164.9 deg
+f=  31599.8 Hz  |Z|=  11.790  ang= +39.2 deg  R=  9.132  L=   37.56 uH  emfC=0.0749 @ +159.1 deg
+f=  39799.8 Hz  |Z|=  13.061  ang= +45.6 deg  R=  9.135  L=   37.33 uH  emfC=0.0680 @ +154.0 deg
+f=  50100.4 Hz  |Z|=  14.859  ang= +52.0 deg  R=  9.156  L=   37.17 uH  emfC=0.0612 @ +148.4 deg
+f=  63099.4 Hz  |Z|=  17.347  ang= +58.0 deg  R=  9.182  L=   37.12 uH  emfC=0.0539 @ +146.2 deg
+f=  79399.7 Hz  |Z|=  20.712  ang= +63.4 deg  R=  9.260  L=   37.14 uH  emfC=0.0473 @ +144.0 deg
+f=  99899.5 Hz  |Z|=  25.077  ang= +68.2 deg  R=  9.329  L=   37.08 uH  emfC=0.0364 @ +141.8 deg
+f= 125997.8 Hz  |Z|=  30.857  ang= +72.2 deg  R=  9.424  L=   37.12 uH  emfC=0.0352 @ +143.2 deg
+f= 157999.5 Hz  |Z|=  38.101  ang= +75.4 deg  R=  9.591  L=   37.14 uH  emfC=0.0304 @ +145.7 deg
+f= 198999.4 Hz  |Z|=  47.596  ang= +78.1 deg  R=  9.854  L=   37.24 uH  emfC=0.0249 @ +149.9 deg
+f= 250998.8 Hz  |Z|=  59.752  ang= +80.1 deg  R= 10.255  L=   37.33 uH  emfC=0.0223 @ +154.3 deg
+f= 315987.6 Hz  |Z|=  75.410  ang= +81.7 deg  R= 10.825  L=   37.59 uH  emfC=0.0201 @ +161.0 deg
+f= 397981.9 Hz  |Z|=  95.566  ang= +83.0 deg  R= 11.712  L=   37.93 uH  emfC=0.0156 @ +165.6 deg
+f= 500978.9 Hz  |Z|= 122.134  ang= +83.9 deg  R= 13.016  L=   38.58 uH  emfC=0.0149 @ +174.3 deg
+f= 630010.7 Hz  |Z|= 157.675  ang= +84.4 deg  R= 15.326  L=   39.64 uH  emfC=0.0106 @ -174.3 deg
+f= 793015.3 Hz  |Z|= 207.926  ang= +84.8 deg  R= 18.993  L=   41.56 uH  emfC=0.0059 @ -147.0 deg
+f= 997993.8 Hz  |Z|= 284.724  ang= +84.8 deg  R= 25.943  L=   45.22 uH  emfC=0.0096 @ -56.6 deg
+f=1259985.3 Hz  |Z|= 420.603  ang= +84.4 deg  R= 41.354  L=   52.87 uH  emfC=0.0307 @ -30.8 deg
+f=1580049.6 Hz  |Z|= 726.190  ang= +82.3 deg  R= 96.726  L=   72.50 uH  emfC=0.0904 @ -21.4 deg
+f=1989732.0 Hz  |Z|=2333.647  ang= +72.6 deg  R=698.942  L=  178.10 uH  emfC=0.6396 @ -43.8 deg
+f=2510019.1 Hz  |Z|=1473.379  ang= -78.1 deg  R=304.035  L=     nan uH  emfC=0.2743 @ -169.9 deg
+f=3160128.4 Hz  |Z|= 536.725  ang= -84.9 deg  R= 47.416  L=     nan uH  emfC=0.1714 @ -170.7 deg
+f=3970185.7 Hz  |Z|= 289.076  ang= -85.6 deg  R= 21.990  L=     nan uH  emfC=0.1552 @ -168.4 deg
+f=5000114.0 Hz  |Z|= 158.516  ang= -84.3 deg  R= 15.774  L=     nan uH  emfC=0.1736 @ -167.5 deg
+
+summary -> data/loop1_pairAB/iter038_2Vpp_20260810T231614Z/summary.csv
+
+--- stderr ---
