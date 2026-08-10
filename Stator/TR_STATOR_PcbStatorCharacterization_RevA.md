@@ -8,7 +8,7 @@
 | Date | 2026-08-10Z |
 | Status | DRAFT — long-run loop in progress; §7 pending |
 | DUT | 3-phase spiral annular PCB stator, wye-connected, 3 terminals (A/B/C) |
-| DUT configuration | Bare stator board only — no rotor, magnets, or back-iron mounted. Bench resting surface TBR (see §5.2) |
+| DUT configuration | Bare stator board only — no rotor, magnets, or back-iron. Resting on wood (non-conductive) |
 | Operator | C. McGrew; automated bench control by MSI test-bench tooling |
 
 ## 1. Objective
@@ -93,24 +93,30 @@ Raw data: `data/run1_pairAB/` (per-point waveform CSVs + `summary.csv`).
 ### 5.2 Low-frequency dispersion — eddy screening
 
 Apparent series L falls from ≈ 156 µH (1 kHz) to the 37.3 µH plateau by
-≈ 20 kHz while series R rises above its DC value. The rotor was NOT mounted
-(bare board), so rotor eddy screening is excluded. Remaining candidates,
-both matching the observed frequency signature (effect peaking at few kHz,
-gone above ~20 kHz):
+≈ 20 kHz while series R rises above its DC value. External-conductor eddy
+screening is excluded: no rotor mounted, board resting on wood. Remaining
+candidates, both matching the frequency signature (effect peaking at few
+kHz, gone above ~20 kHz):
 
-1. **Eddy screening by the bench surface or fixturing** — any conductive
-   plane the board rested on (metal bench, plate, chassis) acts as a
-   shorted turn: L high at low f, expelled flux (lower L) plus reflected
-   loss (higher R) as f rises. Resting surface at time of test is TBR.
+1. **Self-screening by the board's own copper.** Spiral traces are
+   mm-scale wide; copper skin depth passes through that dimension across
+   1–20 kHz (δ ≈ 2.1 mm at 1 kHz, 0.46 mm at 20 kHz). Eddy currents
+   circulating within the trace widths — on all layers, including the
+   open phase — progressively expel flux from the copper: L falls, and
+   the reflected loss raises R (consistent with R: 7.0 Ω DC → 9.1 Ω
+   mid-band). A known effect in PCB machines with wide traces; the
+   mitigation in fabrication is multiple narrow paralleled traces.
 2. **Probe compensation mismatch (CH1 vs CH2)** — a miscompensated 10×
-   probe's pole/zero error introduces phase errors of a few degrees peaked
-   in the 1–20 kHz region, exactly where the excess phase (5.5° at 1 kHz)
-   appears; the extraction is phase-limited there because ∠Z is small.
+   probe introduces phase errors of a few degrees peaked in the same
+   band, and the extraction is phase-limited at low f where ∠Z is small
+   (excess phase observed: 5.5° at 1 kHz).
 
-Discriminating test (2 min, post-loop): verify both probe compensations on
-the scope cal output; re-measure the 1 kHz point with the board suspended
-clear of the bench. Either way the design-relevant value for PWM-rate
-ripple is the **plateau L**, which is insensitive to both mechanisms.
+Discriminating tests (post-loop, minutes): verify both probe compensations
+on the scope cal output; re-measure with a known pure resistor as DUT (a
+comp artifact reproduces on a resistor, real self-screening does not);
+swap CH1/CH2 probes (an artifact moves/flips, physics stays). Either way
+the design-relevant value for PWM-rate ripple is the **plateau L**, which
+is insensitive to both mechanisms.
 
 ### 5.3 Open-phase asymmetry
 
@@ -149,10 +155,12 @@ these in, plus pairs B–C and C–A for per-phase closure.
 1. **F-1:** Pair A–B behaves as a clean series R-L with L_LL = 37.3 µH
    (plateau) and no SRF below 1 MHz. Suitable frequency range for inverter
    ripple analysis: use plateau L.
-2. **F-2:** Strong low-frequency L dispersion; rotor excluded (not mounted).
-   Attributed to bench-surface eddy screening or probe-compensation phase
-   error (§5.2). Action: probe-comp check + suspended-board re-measure of
-   the 1 kHz point; record resting surface. Plateau values unaffected.
+2. **F-2:** Strong low-frequency L dispersion; external conductors excluded
+   (bare board on wood). Leading candidate: self-screening by the board's
+   own wide copper traces; alternative: probe-compensation phase error
+   (§5.2). Action: probe-comp check, known-resistor DUT, probe swap.
+   Plateau values unaffected. If self-screening is confirmed it is a real
+   DUT property worth noting for any low-frequency (sub-corner) use.
 3. **F-3:** Wye topology confirmed electrically; phase-C asymmetry ≤ 7 %.
    Action: repeat at several locked rotor angles to map saliency.
 4. **N-1 (process):** Incident during initial manual capture (USB file
