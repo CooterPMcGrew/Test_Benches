@@ -1,0 +1,4 @@
+# raw per-point waveform captures are hundreds of MB per run — keep local,
+# commit summaries/manifests/logs only
+data/**/f_*.csv
+data/loop1_console.txt
