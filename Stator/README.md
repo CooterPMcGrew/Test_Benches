@@ -43,6 +43,52 @@ Outputs per-point table (f, |Z|, ∠Z, R, L), `sweep_table.csv`, Bode plot,
 and L(f) plot. Validated against synthetic captures (R = 7 Ω, L = 2 mH,
 8-bit quantization): recovers R to 0.1 %, L to 0.3 % across the band.
 
+## Running the bench yourself
+
+One-time / after replug:
+
+```sh
+# serial access to the JDS6600 (lost when the USB is replugged):
+sudo setfacl -m u:$USER:rw /dev/ttyUSB0
+# permanent alternative (takes effect next login): sudo usermod -aG dialout $USER
+```
+
+The scope link needs no action: the "Wired connection 3" NetworkManager
+profile is saved in shared mode, so plugging the scope's Ethernet into the
+USB-C NIC brings up 10.42.0.1 automatically; the scope sits at 10.42.0.29
+(SCPI raw socket, port 5025).
+
+Single sweep (one terminal pair, wired per the diagram above):
+
+```sh
+cd Stator
+uv run --with numpy,pyserial python TOOL_STATOR_SweepOrchestrator_RevA.py \
+    --rsense 42.68 --out data/myrun --freqs 1e3,2e3,5e3,1e4,2e4,5e4,1e5,2e5,5e5,1e6
+```
+
+Add `--smoke` for a single-point wiring check (prints per-channel pk-pk).
+
+Multi-hour characterization loop (dense grid 200 Hz–5 MHz, amplitude
+cycled 5/2/10/20 Vpp, UTC-stamped subfolders, survives terminal close):
+
+```sh
+cd Stator
+setsid nohup uv run --with numpy,pyserial python TOOL_STATOR_SweepLoop_RevA.py \
+    --rsense 42.68 --hours 3 --base data/myloop > data/myloop_console.txt 2>&1 &
+tail -f data/myloop/loop_log.txt     # watch progress; Ctrl-C stops the tail only
+```
+
+Figures from any run's summary:
+
+```sh
+uv run --with numpy,matplotlib python TOOL_STATOR_ReportFigures_RevA.py \
+    data/myrun/summary.csv figures
+```
+
+Rules of thumb: never run two things against the scope at once; check
+`data/*/loop_log.txt` for a live loop before starting anything; re-measure
+Rsense with the DMM if you swap it, and pass the measured value.
+
 ## Interpretation caveats
 
 - Terminal-pair inductance of a wye pair is L_LL = 2(L_phase − M). The
