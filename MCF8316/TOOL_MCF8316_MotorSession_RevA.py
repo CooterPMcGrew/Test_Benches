@@ -17,7 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "Stator"))
 from TOOL_STATOR_SweepOrchestrator_RevA import SDS1104XU, save_csv  # noqa: E402
 from TOOL_MCF8316_Bringup_RevA import (  # noqa: E402
-    Bridge, faults, dump, rmw, CLR_FLT, MOTOR_RES_CODE, MOTOR_IND_CODE)
+    Bridge, faults, dump, rmw, CLR_ALL, MOTOR_RES_CODE, MOTOR_IND_CODE)
 import numpy as np  # noqa: E402
 
 ALGO_DEBUG2 = 0xEE
@@ -115,7 +115,7 @@ def grab_save(name):
 # ---- MPET Ke + mechanical measurement --------------------------------------
 if not args.skip_mpet:
     print("=== MPET Ke/mech measurement (motor will spin!) ===")
-    br.cmd(f"w ea {CLR_FLT:x}")
+    br.cmd(f"w ea {CLR_ALL:x}")
     time.sleep(0.3)
     br.cmd("drvoff 0")
     # wake pulse then idle duty (nonzero target enters MPET with CMD set)
@@ -140,7 +140,7 @@ if not args.skip_mpet:
 
 # ---- closed-loop spin attempt ----------------------------------------------
 print("=== closed-loop spin attempt ===")
-br.cmd(f"w ea {CLR_FLT:x}")
+br.cmd(f"w ea {CLR_ALL:x}")
 time.sleep(0.3)
 br.cmd("drvoff 0")
 scope.cmd("TDIV 20MS")

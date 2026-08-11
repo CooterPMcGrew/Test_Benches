@@ -1,0 +1,152 @@
+[
+ {
+  "t": 0.0,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 0.21,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 0.42,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 0.63,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 0.84,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 1.05,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 1.27,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 1.48,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 1.69,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 1.9,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 2.11,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 2.32,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 2.53,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 2.74,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 2.95,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 3.17,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 3.38,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 3.59,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 3.8,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 4.01,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 4.22,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 4.43,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 4.64,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 4.86,
+  "state": "0x3",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x00000000"
+ },
+ {
+  "t": 5.07,
+  "state": "0x30000E",
+  "fg_elhz": "INVALID",
+  "ctrl": "0x80080000"
+ }
+]
