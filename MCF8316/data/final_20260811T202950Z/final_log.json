@@ -1,0 +1,304 @@
+{
+ "stamp_utc": "20260811T202950Z",
+ "config_writes": {
+  "CL2": {
+   "reg": "0x8A",
+   "old": "0x8BADCB0D",
+   "want": "0x8BADCB0D",
+   "readback": "0x8BADCB0D",
+   "verified": true
+  },
+  "CL3_bemf": {
+   "reg": "0x8C",
+   "old": "0x1E000000",
+   "want": "0x1E000000",
+   "readback": "0x1E000000",
+   "verified": true
+  },
+  "CL4": {
+   "reg": "0x8E",
+   "old": "0x050140C8",
+   "want": "0x050140C8",
+   "readback": "0x050140C8",
+   "verified": true
+  },
+  "CL1_acc5_pwm60k": {
+   "reg": "0x88",
+   "old": "0x053501B5",
+   "want": "0x073501B5",
+   "readback": "0x073501B5",
+   "verified": true
+  },
+  "MS2": {
+   "reg": "0x86",
+   "old": "0xA986600C",
+   "want": "0xA986600C",
+   "readback": "0xA986600C",
+   "verified": true
+  },
+  "PIN_pwm_mode": {
+   "reg": "0xA4",
+   "old": "0x00000001",
+   "want": "0x00000001",
+   "readback": "0x00000001",
+   "verified": true
+  },
+  "FC1_locks": {
+   "reg": "0x90",
+   "old": "0xBFF82906",
+   "want": "0xBFF82906",
+   "readback": "0xBFF82906",
+   "verified": true
+  },
+  "FC2_lock2_off": {
+   "reg": "0x92",
+   "old": "0xD0D00888",
+   "want": "0xD0D00888",
+   "readback": "0xD0D00888",
+   "verified": true
+  }
+ },
+ "config_ok": true,
+ "startup_trace_tail": [
+  {
+   "t": 12.87,
+   "state": "0x7",
+   "fg": 73.17073345184326,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 13.05,
+   "state": "0x7",
+   "fg": 75.56674480438232,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 13.23,
+   "state": "0x7",
+   "fg": 79.08264398574829,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 13.42,
+   "state": "0x7",
+   "fg": 81.30080699920654,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 13.6,
+   "state": "0x7",
+   "fg": 84.66205596923828,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 13.78,
+   "state": "0x7",
+   "fg": 87.71929740905762,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 13.97,
+   "state": "0x7",
+   "fg": 90.81277251243591,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 14.15,
+   "state": "0x7",
+   "fg": 93.75,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 14.33,
+   "state": "0x7",
+   "fg": 93.75,
+   "ctrl": "0x0"
+  },
+  {
+   "t": 14.52,
+   "state": "0x8",
+   "fg": 97.40260243415833,
+   "ctrl": "0x0"
+  }
+ ],
+ "hold_fg_duty150": [
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836,
+  269.4570541381836
+ ],
+ "captures": {
+  "final_duty150_slow": {
+   "CH1": 0.44,
+   "CH2": 0.43,
+   "CH3": 0.45
+  },
+  "final_duty150_fast": {
+   "CH1": 0.64,
+   "CH2": 0.48,
+   "CH3": 0.5
+  },
+  "position_hold": {
+   "CH1": 0.21,
+   "CH2": 0.21,
+   "CH3": 0.15
+  }
+ },
+ "stepup_fault": "0x80900000",
+ "position_demo": [
+  {
+   "angle": 0,
+   "state": "0x0"
+  },
+  {
+   "angle": 90,
+   "state": "0x0"
+  },
+  {
+   "angle": 180,
+   "state": "0x0"
+  },
+  {
+   "angle": 270,
+   "state": "0x0"
+  },
+  {
+   "angle": 0,
+   "state": "0x0"
+  }
+ ],
+ "shadow_before_burn": {
+  "0x080_ISD_CONFIG": "0x64738C20",
+  "0x082_REV_DRIVE_CONFIG": "0xA8200000",
+  "0x084_MOTOR_STARTUP1": "0x0B6807D0",
+  "0x086_MOTOR_STARTUP2": "0xA986600C",
+  "0x088_CLOSED_LOOP1": "0x073501B5",
+  "0x08A_CLOSED_LOOP2": "0x8BADCB0D",
+  "0x08C_CLOSED_LOOP3": "0x1E000000",
+  "0x08E_CLOSED_LOOP4": "0x050140C8",
+  "0x090_FAULT_CONFIG1": "0xBFF82906",
+  "0x092_FAULT_CONFIG2": "0xD0D00888",
+  "0x094_REG_94": "0x00000000",
+  "0x096_REG_96": "0x00000000",
+  "0x098_REG_98": "0x00000000",
+  "0x09A_REG_9A": "0x800D0000",
+  "0x09C_REG_9C": "0x00000000",
+  "0x09E_REG_9E": "0x00000000",
+  "0x0A0_REG_A0": "0xA433407D",
+  "0x0A2_REG_A2": "0x000001A7",
+  "0x0A4_PIN_CONFIG": "0x00000001",
+  "0x0A6_DEVICE_CONFIG1": "0x00101462",
+  "0x0A8_DEVICE_CONFIG2": "0xC000F00F",
+  "0x0AA_PERI_CONFIG1": "0xC1C01F00",
+  "0x0AC_GD_CONFIG1": "0x9C450100",
+  "0x0AE_GD_CONFIG2": "0x80200000",
+  "0x0E0_GATE_DRIVER_FAULT_STATUS": "0x00000000",
+  "0x0E2_CONTROLLER_FAULT_STATUS": "0x00000000",
+  "0x0E4_ALGO_STATUS": "0x06340004",
+  "0x0E6_MTR_PARAMS": "0x00000000",
+  "0x0E8_ALGO_STATUS_MPET": "0x0A000000",
+  "0x0EA_ALGO_CTRL1": "0x00000000",
+  "0x0EC_ALGO_DEBUG1": "0x00000000",
+  "0x0EE_ALGO_DEBUG2": "0x00000000",
+  "0x0F0_CURRENT_PI": "0x001F03A8",
+  "0x0F2_SPEED_PI": "0x00000000",
+  "0x190_ALGORITHM_STATE": "0x00000000",
+  "0x196_FG_SPEED_FDBK": "0x00FF6F98"
+ },
+ "shadow_after_eeprom_reload": {
+  "0x080_ISD_CONFIG": "0x64738C20",
+  "0x082_REV_DRIVE_CONFIG": "0xA8200000",
+  "0x084_MOTOR_STARTUP1": "0x0B6807D0",
+  "0x086_MOTOR_STARTUP2": "0xA306600C",
+  "0x088_CLOSED_LOOP1": "0x0D3201B5",
+  "0x08A_CLOSED_LOOP2": "0x9BAD0000",
+  "0x08C_CLOSED_LOOP3": "0x00000000",
+  "0x08E_CLOSED_LOOP4": "0x00000000",
+  "0x090_FAULT_CONFIG1": "0xBEC80106",
+  "0x092_FAULT_CONFIG2": "0xF0D00888",
+  "0x094_REG_94": "0x00000000",
+  "0x096_REG_96": "0x00000000",
+  "0x098_REG_98": "0x00000000",
+  "0x09A_REG_9A": "0x800D0000",
+  "0x09C_REG_9C": "0x00000000",
+  "0x09E_REG_9E": "0x00000000",
+  "0x0A0_REG_A0": "0xA433407D",
+  "0x0A2_REG_A2": "0x000001A7",
+  "0x0A4_PIN_CONFIG": "0x00000000",
+  "0x0A6_DEVICE_CONFIG1": "0x00101462",
+  "0x0A8_DEVICE_CONFIG2": "0xC000F00F",
+  "0x0AA_PERI_CONFIG1": "0xC1C01F00",
+  "0x0AC_GD_CONFIG1": "0x9C450100",
+  "0x0AE_GD_CONFIG2": "0x80200000",
+  "0x0E0_GATE_DRIVER_FAULT_STATUS": "0x00000000",
+  "0x0E2_CONTROLLER_FAULT_STATUS": "0x00000000",
+  "0x0E4_ALGO_STATUS": "0x06340004",
+  "0x0E6_MTR_PARAMS": "0x00000000",
+  "0x0E8_ALGO_STATUS_MPET": "0x0A000000",
+  "0x0EA_ALGO_CTRL1": "0x00000000",
+  "0x0EC_ALGO_DEBUG1": "0x00000000",
+  "0x0EE_ALGO_DEBUG2": "0x00000000",
+  "0x0F0_CURRENT_PI": "0x03010301",
+  "0x0F2_SPEED_PI": "0x00000000",
+  "0x190_ALGORITHM_STATE": "0x00000000",
+  "0x196_FG_SPEED_FDBK": "0x7FFFFFFF"
+ },
+ "burn_diffs": {
+  "0x086_MOTOR_STARTUP2": [
+   "0xA986600C",
+   "0xA306600C"
+  ],
+  "0x088_CLOSED_LOOP1": [
+   "0x073501B5",
+   "0x0D3201B5"
+  ],
+  "0x08A_CLOSED_LOOP2": [
+   "0x8BADCB0D",
+   "0x9BAD0000"
+  ],
+  "0x08C_CLOSED_LOOP3": [
+   "0x1E000000",
+   "0x00000000"
+  ],
+  "0x08E_CLOSED_LOOP4": [
+   "0x050140C8",
+   "0x00000000"
+  ],
+  "0x090_FAULT_CONFIG1": [
+   "0xBFF82906",
+   "0xBEC80106"
+  ],
+  "0x092_FAULT_CONFIG2": [
+   "0xD0D00888",
+   "0xF0D00888"
+  ],
+  "0x0A4_PIN_CONFIG": [
+   "0x00000001",
+   "0x00000000"
+  ],
+  "0x0F0_CURRENT_PI": [
+   "0x001F03A8",
+   "0x03010301"
+  ]
+ },
+ "faults_final": {
+  "GD_FAULT": "0x00000000",
+  "CTRL_FAULT": "0x00000000"
+ }
+}

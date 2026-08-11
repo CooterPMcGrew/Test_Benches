@@ -37,6 +37,12 @@ static uint32_t g_lastCmdMs = 0;
 static bool g_energized = false;   // DRVOFF released or speed nonzero
 static bool g_deadmanTripped = false;
 
+// FG pulse counting for hardware speed telemetry
+static volatile uint32_t g_fgCount = 0;
+static uint32_t g_fgLastCount = 0;
+static uint32_t g_fgLastMicros = 0;
+static void IRAM_ATTR fgIsr() { g_fgCount++; }
+
 static bool mcfWrite32(uint32_t reg, uint32_t val, uint8_t addr = MCF_ADDR) {
   uint32_t cw = (0u << 23) | (0u << 22) | (1u << 20) | (reg & 0xFFFFF);
   Wire.beginTransmission(addr);
@@ -77,6 +83,8 @@ void setup() {
   Serial.begin(115200);
   pinMode(PIN_NFAULT, INPUT);   // board provides pull-up to AVDD
   pinMode(PIN_FG, INPUT);       // board provides pull-up to AVDD
+  attachInterrupt(PIN_FG, fgIsr, RISING);
+  g_fgLastMicros = micros();
   pinMode(PIN_DIR, OUTPUT);
   digitalWrite(PIN_DIR, LOW);
   pinMode(PIN_DRVOFF, OUTPUT);
@@ -141,6 +149,16 @@ void loop() {
         ledcWrite(0, a);
         if (a > 0) g_energized = true;
         Serial.printf("SPEED duty=%lu/1023\n", (unsigned long)a);
+      } else if (!strcmp(cmd, "fg")) {
+        // FG pulse frequency since the last "fg" query (hardware speed)
+        uint32_t now = micros();
+        uint32_t cnt = g_fgCount;
+        uint32_t dc = cnt - g_fgLastCount;
+        float dt = (now - g_fgLastMicros) / 1e6f;
+        g_fgLastCount = cnt;
+        g_fgLastMicros = now;
+        Serial.printf("FG %.2f Hz (%lu edges / %.3f s)\n",
+                      dt > 0 ? dc / dt : 0.0f, (unsigned long)dc, dt);
       } else if (!strcmp(cmd, "pins")) {
         Serial.printf("nFAULT=%d FG=%d\n", digitalRead(PIN_NFAULT),
                       digitalRead(PIN_FG));
