@@ -14,7 +14,7 @@ import time
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "Stator"))
 from TOOL_STATOR_SweepOrchestrator_RevA import SDS1104XU, save_csv  # noqa: E402
-from TOOL_MCF8316_Bringup_RevA import Bridge, faults, CLR_FLT  # noqa: E402
+from TOOL_MCF8316_Bringup_RevA import Bridge, faults, CLR_ALL  # noqa: E402
 import numpy as np  # noqa: E402
 
 stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -56,7 +56,7 @@ def run_test(name, duty, tdiv, trigger=False, stop_at_state=6, dwell=15.0,
              extra_delay=0.15):
     """Command speed, poll the algorithm state machine, STOP the scope
     extra_delay after the state reaches stop_at_state (or on first fault)."""
-    br.cmd(f"w ea {CLR_FLT:x}")
+    br.cmd(f"w ea {CLR_ALL:x}")
     time.sleep(0.3)
     scope.cmd(f"TDIV {tdiv}")
     if trigger:

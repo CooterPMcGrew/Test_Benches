@@ -3,3 +3,4 @@ data/*/r2t*.csv
 data/*/mpet_capture.csv
 data/*/spin_capture.csv
 __pycache__/
+data/*/*.csv

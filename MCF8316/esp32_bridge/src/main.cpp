@@ -17,6 +17,11 @@
 //   dir <0|1>              direction pin
 //   speed <0..1023>        20 kHz PWM duty on SPEED pin (0 = off/brake-idle)
 //   pins                   report control pin states
+//
+// DEAD-MAN SWITCH: whenever SPEED != 0 or DRVOFF is released, the host must
+// send any command at least every DEADMAN_MS or the bridge autonomously
+// asserts DRVOFF and zeroes SPEED. A hung host can never leave the motor
+// energized.
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -26,6 +31,11 @@ constexpr uint8_t PIN_NFAULT = 4, PIN_SPEED = 5, PIN_DIR = 6, PIN_DRVOFF = 7,
                   PIN_FG = 10;
 constexpr uint8_t MCF_ADDR = 0x01;  // 7-bit default target ID
 constexpr uint32_t I2C_HZ = 100000;
+constexpr uint32_t DEADMAN_MS = 3000;
+
+static uint32_t g_lastCmdMs = 0;
+static bool g_energized = false;   // DRVOFF released or speed nonzero
+static bool g_deadmanTripped = false;
 
 static bool mcfWrite32(uint32_t reg, uint32_t val, uint8_t addr = MCF_ADDR) {
   uint32_t cw = (0u << 23) | (0u << 22) | (1u << 20) | (reg & 0xFFFFF);
@@ -82,12 +92,24 @@ void setup() {
 void loop() {
   static char line[64];
   static size_t n = 0;
+  if (g_energized && (millis() - g_lastCmdMs > DEADMAN_MS)) {
+    digitalWrite(PIN_DRVOFF, HIGH);
+    ledcWrite(0, 0);
+    g_energized = false;
+    g_deadmanTripped = true;
+    Serial.println("DEADMAN: DRVOFF asserted, speed 0");
+  }
   while (Serial.available()) {
     char c = Serial.read();
     if (c == '\n' || c == '\r') {
       line[n] = 0;
       n = 0;
       if (!line[0]) continue;
+      g_lastCmdMs = millis();
+      if (g_deadmanTripped) {
+        Serial.println("NOTE: deadman had tripped since last command");
+        g_deadmanTripped = false;
+      }
       char cmd[16];
       uint32_t a = 0, v = 0;
       int nf = sscanf(line, "%15s %lx %lx", cmd, (unsigned long *)&a,
@@ -109,6 +131,7 @@ void loop() {
         Serial.printf("nFAULT=%d (0 = fault active)\n", digitalRead(PIN_NFAULT));
       } else if (!strcmp(cmd, "drvoff") && nf >= 2) {
         digitalWrite(PIN_DRVOFF, a ? HIGH : LOW);
+        g_energized = (a == 0);
         Serial.printf("DRVOFF=%lu\n", (unsigned long)a);
       } else if (!strcmp(cmd, "dir") && nf >= 2) {
         digitalWrite(PIN_DIR, a ? HIGH : LOW);
@@ -116,6 +139,7 @@ void loop() {
       } else if (!strcmp(cmd, "speed") && nf >= 2) {
         if (a > 1023) a = 1023;
         ledcWrite(0, a);
+        if (a > 0) g_energized = true;
         Serial.printf("SPEED duty=%lu/1023\n", (unsigned long)a);
       } else if (!strcmp(cmd, "pins")) {
         Serial.printf("nFAULT=%d FG=%d\n", digitalRead(PIN_NFAULT),

@@ -1,0 +1,20 @@
+{
+ "stamp_utc": "20260811T180429Z",
+ "config_writes": {
+  "MS2_gentle_ramp": {
+   "reg": "0x86",
+   "old": "0xA306600C",
+   "want": "0x9986600C",
+   "readback": "0x9986600C",
+   "verified": true
+  }
+ },
+ "stage150": "synced",
+ "stage150_held_fg": 3200.0,
+ "stage300": "synced",
+ "stage300_held_fg": 3200.0,
+ "faults_final": {
+  "GD_FAULT": "0x00000000",
+  "CTRL_FAULT": "0x00000000"
+ }
+}

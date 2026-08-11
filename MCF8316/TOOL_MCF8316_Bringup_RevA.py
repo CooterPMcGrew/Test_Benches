@@ -44,6 +44,7 @@ RAM_REGS = {
     0x196: "FG_SPEED_FDBK",
 }
 CLR_FLT = 1 << 29  # ALGO_CTRL1
+CLR_ALL = (1 << 29) | (1 << 28)  # CLR_FLT + CLR_FLT_RETRY_COUNT - always both
 
 # codes from the datasheet look-up tables (parsed from SLLSFV2A):
 MOTOR_RES_CODE = 0xCB   # 3.4 ohm   (measured phase R: 3.5 ohm)
@@ -63,11 +64,12 @@ class Bridge:
         return self.s.readline().decode(errors="replace").strip()
 
     def read(self, reg):
-        r = self.cmd(f"r {reg:x}")
-        m = re.search(r"= ([0-9A-F]{8})", r)
-        if not m:
-            raise IOError(f"read {reg:#x} failed: {r}")
-        return int(m.group(1), 16)
+        for _ in range(3):   # async notices (deadman etc.) may interleave
+            r = self.cmd(f"r {reg:x}")
+            m = re.search(r"= ([0-9A-F]{8})", r)
+            if m:
+                return int(m.group(1), 16)
+        raise IOError(f"read {reg:#x} failed: {r}")
 
     def write(self, reg, val):
         r = self.cmd(f"w {reg:x} {val:x}")
