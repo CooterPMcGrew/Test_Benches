@@ -53,7 +53,11 @@ static volatile uint32_t g_hallBad = 0;     // illegal transitions (noise/000/11
 // map hall state (CBA bits) to sequence index; 0xFF = invalid
 static const uint8_t HALL_SEQ[8] = {0xFF, 0, 2, 1, 4, 5, 3, 0xFF};
 
+static volatile uint32_t g_hallLastIsrUs = 0;
 static void IRAM_ATTR hallIsr() {
+  uint32_t nowUs = micros();
+  if (nowUs - g_hallLastIsrUs < 150) return;   // chatter lockout
+  g_hallLastIsrUs = nowUs;
   uint8_t s = (digitalRead(PIN_HALL_C) << 2) | (digitalRead(PIN_HALL_B) << 1) |
               digitalRead(PIN_HALL_A);
   uint8_t idx = HALL_SEQ[s], prev = HALL_SEQ[g_hallState];
@@ -202,6 +206,8 @@ void loop() {
                       (unsigned long)g_hallBad, cps, cps / 60.0f * 60.0f);
       } else if (!strcmp(cmd, "hallzero")) {
         g_hallPos = 0;
+        g_hallBad = 0;
+        g_hallEdges = 0;
         Serial.println("hall position zeroed");
       } else if (!strcmp(cmd, "fg")) {
         // FG pulse frequency since the last "fg" query (hardware speed)
