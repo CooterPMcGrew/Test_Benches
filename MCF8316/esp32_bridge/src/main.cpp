@@ -43,6 +43,34 @@ static uint32_t g_fgLastCount = 0;
 static uint32_t g_fgLastMicros = 0;
 static void IRAM_ATTR fgIsr() { g_fgCount++; }
 
+// Hall sensors: 3 phases -> 6-state sequence, signed position counter.
+// 60 counts per mechanical rev on a 10-pole-pair motor (6 deg/count).
+constexpr uint8_t PIN_HALL_A = 11, PIN_HALL_B = 12, PIN_HALL_C = 13;
+static volatile int32_t g_hallPos = 0;      // signed transition counter
+static volatile uint32_t g_hallEdges = 0;   // total transitions
+static volatile uint8_t g_hallState = 0;
+static volatile uint32_t g_hallBad = 0;     // illegal transitions (noise/000/111)
+// map hall state (CBA bits) to sequence index; 0xFF = invalid
+static const uint8_t HALL_SEQ[8] = {0xFF, 0, 2, 1, 4, 5, 3, 0xFF};
+
+static void IRAM_ATTR hallIsr() {
+  uint8_t s = (digitalRead(PIN_HALL_C) << 2) | (digitalRead(PIN_HALL_B) << 1) |
+              digitalRead(PIN_HALL_A);
+  uint8_t idx = HALL_SEQ[s], prev = HALL_SEQ[g_hallState];
+  if (idx != 0xFF && prev != 0xFF && s != g_hallState) {
+    int8_t d = (int8_t)((idx - prev + 9) % 6) - 3;  // -2..3, +-1 for valid steps
+    if (d == 1) g_hallPos++;
+    else if (d == -1) g_hallPos--;
+    else g_hallBad++;                                // skipped state(s)
+    g_hallEdges++;
+  } else if (idx == 0xFF) {
+    g_hallBad++;
+  }
+  g_hallState = s;
+}
+static uint32_t g_hallLastEdges = 0;
+static uint32_t g_hallLastMicros = 0;
+
 static bool mcfWrite32(uint32_t reg, uint32_t val, uint8_t addr = MCF_ADDR) {
   uint32_t cw = (0u << 23) | (0u << 22) | (1u << 20) | (reg & 0xFFFFF);
   Wire.beginTransmission(addr);
@@ -85,6 +113,15 @@ void setup() {
   pinMode(PIN_FG, INPUT);       // board provides pull-up to AVDD
   attachInterrupt(PIN_FG, fgIsr, RISING);
   g_fgLastMicros = micros();
+  pinMode(PIN_HALL_A, INPUT_PULLUP);
+  pinMode(PIN_HALL_B, INPUT_PULLUP);
+  pinMode(PIN_HALL_C, INPUT_PULLUP);
+  g_hallState = (digitalRead(PIN_HALL_C) << 2) | (digitalRead(PIN_HALL_B) << 1) |
+                digitalRead(PIN_HALL_A);
+  attachInterrupt(PIN_HALL_A, hallIsr, CHANGE);
+  attachInterrupt(PIN_HALL_B, hallIsr, CHANGE);
+  attachInterrupt(PIN_HALL_C, hallIsr, CHANGE);
+  g_hallLastMicros = micros();
   pinMode(PIN_DIR, OUTPUT);
   digitalWrite(PIN_DIR, LOW);
   pinMode(PIN_DRVOFF, OUTPUT);
@@ -149,6 +186,23 @@ void loop() {
         ledcWrite(0, a);
         if (a > 0) g_energized = true;
         Serial.printf("SPEED duty=%lu/1023\n", (unsigned long)a);
+      } else if (!strcmp(cmd, "hall")) {
+        // state, signed position (60 counts/mech rev @ 10 pp), speed since
+        // last query, error count
+        uint32_t now = micros();
+        uint32_t e = g_hallEdges;
+        uint32_t de = e - g_hallLastEdges;
+        float dt = (now - g_hallLastMicros) / 1e6f;
+        g_hallLastEdges = e;
+        g_hallLastMicros = now;
+        float cps = dt > 0 ? de / dt : 0;
+        Serial.printf("HALL state=%u pos=%ld edges=%lu bad=%lu cps=%.1f "
+                      "rpm=%.1f\n",
+                      g_hallState, (long)g_hallPos, (unsigned long)e,
+                      (unsigned long)g_hallBad, cps, cps / 60.0f * 60.0f);
+      } else if (!strcmp(cmd, "hallzero")) {
+        g_hallPos = 0;
+        Serial.println("hall position zeroed");
       } else if (!strcmp(cmd, "fg")) {
         // FG pulse frequency since the last "fg" query (hardware speed)
         uint32_t now = micros();
