@@ -1,0 +1,93 @@
+{
+ "stamp_utc": "20260811T203851Z",
+ "pole_pairs": 10,
+ "rotor_mass_kg": 1.3,
+ "config_writes": {
+  "CL2+brake": {
+   "reg": "0x8A",
+   "old": "0xABADCB0D",
+   "want": "0xABADCB0D",
+   "readback": "0xABADCB0D",
+   "verified": true
+  },
+  "CL3_ke": {
+   "reg": "0x8C",
+   "old": "0x1E000000",
+   "want": "0x1E000000",
+   "readback": "0x1E000000",
+   "verified": true
+  },
+  "CL4": {
+   "reg": "0x8E",
+   "old": "0x050140C8",
+   "want": "0x050140C8",
+   "readback": "0x050140C8",
+   "verified": true
+  },
+  "CL1_acc_pwm": {
+   "reg": "0x88",
+   "old": "0x053501B5",
+   "want": "0x053501B5",
+   "readback": "0x053501B5",
+   "verified": true
+  },
+  "MS2": {
+   "reg": "0x86",
+   "old": "0xA986600C",
+   "want": "0xA986600C",
+   "readback": "0xA986600C",
+   "verified": true
+  },
+  "MS1_ramp": {
+   "reg": "0x84",
+   "old": "0x036807D0",
+   "want": "0x036807D0",
+   "readback": "0x036807D0",
+   "verified": true
+  },
+  "PIN_pwm": {
+   "reg": "0xA4",
+   "old": "0x00000001",
+   "want": "0x00000001",
+   "readback": "0x00000001",
+   "verified": true
+  },
+  "FC1": {
+   "reg": "0x90",
+   "old": "0xBEC80106",
+   "want": "0xBFF82906",
+   "readback": "0xBFF82906",
+   "verified": true
+  },
+  "FC2": {
+   "reg": "0x92",
+   "old": "0xF0D00888",
+   "want": "0xD0D00888",
+   "readback": "0xD0D00888",
+   "verified": true
+  },
+  "CL2_stop_hiz": {
+   "reg": "0x8A",
+   "old": "0xABADCB0D",
+   "want": "0x8BADCB0D",
+   "readback": "0x8BADCB0D",
+   "verified": true
+  },
+  "CL2_stop_brake_restore": {
+   "reg": "0x8A",
+   "old": "0x8BADCB0D",
+   "want": "0xABADCB0D",
+   "readback": "0xABADCB0D",
+   "verified": true
+  }
+ },
+ "config_ok": true,
+ "duty150_commutation_elhz": 53.57142857142858,
+ "duty300_commutation_elhz": 3.5714285714285716,
+ "duty500_commutation_elhz": 57.142857142857146,
+ "faults_final": {
+  "GD_FAULT": "0x00000000",
+  "CTRL_FAULT": "0x00000000"
+ },
+ "n_telemetry": 271
+}
