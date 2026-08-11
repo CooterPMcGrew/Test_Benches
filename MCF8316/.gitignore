@@ -1,0 +1,5 @@
+data/*/t*.csv
+data/*/r2t*.csv
+data/*/mpet_capture.csv
+data/*/spin_capture.csv
+__pycache__/

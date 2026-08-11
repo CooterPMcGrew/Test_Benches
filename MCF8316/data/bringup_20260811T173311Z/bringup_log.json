@@ -1,0 +1,183 @@
+{
+ "stamp_utc": "20260811T173311Z",
+ "asfound": {
+  "0x080_ISD_CONFIG": "0x64738C20",
+  "0x082_REV_DRIVE_CONFIG": "0xA8200000",
+  "0x084_MOTOR_STARTUP1": "0x0B6807D0",
+  "0x086_MOTOR_STARTUP2": "0xA306600C",
+  "0x088_CLOSED_LOOP1": "0x0D3201B5",
+  "0x08A_CLOSED_LOOP2": "0x9BAD0000",
+  "0x08C_CLOSED_LOOP3": "0x00000000",
+  "0x08E_CLOSED_LOOP4": "0x00000000",
+  "0x090_FAULT_CONFIG1": "0xBEC80106",
+  "0x092_FAULT_CONFIG2": "0xF0D00888",
+  "0x094_REG_94": "0x00000000",
+  "0x096_REG_96": "0x00000000",
+  "0x098_REG_98": "0x00000000",
+  "0x09A_REG_9A": "0x800D0000",
+  "0x09C_REG_9C": "0x00000000",
+  "0x09E_REG_9E": "0x00000000",
+  "0x0A0_REG_A0": "0xA433407D",
+  "0x0A2_REG_A2": "0x000001A7",
+  "0x0A4_PIN_CONFIG": "0x00000000",
+  "0x0A6_DEVICE_CONFIG1": "0x00101462",
+  "0x0A8_DEVICE_CONFIG2": "0xC000F00F",
+  "0x0AA_PERI_CONFIG1": "0xC1C01F00",
+  "0x0AC_GD_CONFIG1": "0x9C450100",
+  "0x0AE_GD_CONFIG2": "0x80200000",
+  "0x0E0_GATE_DRIVER_FAULT_STATUS": "0x00000000",
+  "0x0E2_CONTROLLER_FAULT_STATUS": "0x00000000",
+  "0x0E4_ALGO_STATUS": "0x00000004",
+  "0x0E6_MTR_PARAMS": "0x00000000",
+  "0x0E8_ALGO_STATUS_MPET": "0x0A000000",
+  "0x0EA_ALGO_CTRL1": "0x00000000",
+  "0x0EC_ALGO_DEBUG1": "0x00000000",
+  "0x0EE_ALGO_DEBUG2": "0x00000000",
+  "0x0F0_CURRENT_PI": "0x03010301",
+  "0x0F2_SPEED_PI": "0x00000000",
+  "0x190_ALGORITHM_STATE": "0x00000000",
+  "0x196_FG_SPEED_FDBK": "0x7FFFFFFF"
+ },
+ "faults_asfound": {
+  "GD_FAULT": "0x00000000",
+  "CTRL_FAULT": "0x00000000"
+ },
+ "config_writes": {
+  "CL2_res_ind": {
+   "reg": "0x8A",
+   "old": "0x9BAD0000",
+   "want": "0x9BADCB0D",
+   "readback": "0x9BADCB0D",
+   "verified": true
+  },
+  "CL3_bemf_placeholder": {
+   "reg": "0x8C",
+   "old": "0x00000000",
+   "want": "0x00800000",
+   "readback": "0x00800000",
+   "verified": true
+  },
+  "CL4_spdloop_maxspeed": {
+   "reg": "0x8E",
+   "old": "0x00000000",
+   "want": "0x050140C8",
+   "readback": "0x050140C8",
+   "verified": true
+  },
+  "PIN_speed_mode_pwm": {
+   "reg": "0xA4",
+   "old": "0x00000000",
+   "want": "0x00000001",
+   "readback": "0x00000001",
+   "verified": true
+  }
+ },
+ "postconfig": {
+  "0x080_ISD_CONFIG": "0x64738C20",
+  "0x082_REV_DRIVE_CONFIG": "0xA8200000",
+  "0x084_MOTOR_STARTUP1": "0x0B6807D0",
+  "0x086_MOTOR_STARTUP2": "0xA306600C",
+  "0x088_CLOSED_LOOP1": "0x0D3201B5",
+  "0x08A_CLOSED_LOOP2": "0x9BADCB0D",
+  "0x08C_CLOSED_LOOP3": "0x00800000",
+  "0x08E_CLOSED_LOOP4": "0x050140C8",
+  "0x090_FAULT_CONFIG1": "0xBEC80106",
+  "0x092_FAULT_CONFIG2": "0xF0D00888",
+  "0x094_REG_94": "0x00000000",
+  "0x096_REG_96": "0x00000000",
+  "0x098_REG_98": "0x00000000",
+  "0x09A_REG_9A": "0x800D0000",
+  "0x09C_REG_9C": "0x00000000",
+  "0x09E_REG_9E": "0x00000000",
+  "0x0A0_REG_A0": "0xA433407D",
+  "0x0A2_REG_A2": "0x000001A7",
+  "0x0A4_PIN_CONFIG": "0x00000001",
+  "0x0A6_DEVICE_CONFIG1": "0x00101462",
+  "0x0A8_DEVICE_CONFIG2": "0xC000F00F",
+  "0x0AA_PERI_CONFIG1": "0xC1C01F00",
+  "0x0AC_GD_CONFIG1": "0x9C450100",
+  "0x0AE_GD_CONFIG2": "0x80200000",
+  "0x0E0_GATE_DRIVER_FAULT_STATUS": "0x00000000",
+  "0x0E2_CONTROLLER_FAULT_STATUS": "0x00000000",
+  "0x0E4_ALGO_STATUS": "0x00000004",
+  "0x0E6_MTR_PARAMS": "0x00000000",
+  "0x0E8_ALGO_STATUS_MPET": "0x0A000000",
+  "0x0EA_ALGO_CTRL1": "0x00000000",
+  "0x0EC_ALGO_DEBUG1": "0x00000000",
+  "0x0EE_ALGO_DEBUG2": "0x00000000",
+  "0x0F0_CURRENT_PI": "0x001F03A8",
+  "0x0F2_SPEED_PI": "0x00000000",
+  "0x190_ALGORITHM_STATE": "0x00000000",
+  "0x196_FG_SPEED_FDBK": "0x7FFFFFFF"
+ },
+ "config_all_verified": true,
+ "tests": {
+  "t1_slow_align_ramp": {
+   "duty": 150,
+   "tdiv": "100MS",
+   "state_trace": [
+    {
+     "t": 0.0,
+     "state": "0x00000003",
+     "gd": "0x00000000",
+     "ctrl": "0x00000000"
+    }
+   ],
+   "faults_after": {
+    "GD_FAULT": "0x00000000",
+    "CTRL_FAULT": "0x80900000"
+   },
+   "pkpk": {
+    "CH1": 0.6,
+    "CH2": 0.8,
+    "CH3": 0.6
+   }
+  },
+  "t2_pwm_detail": {
+   "duty": 150,
+   "tdiv": "10US",
+   "state_trace": [
+    {
+     "t": 0.0,
+     "state": "0x00000003",
+     "gd": "0x00000000",
+     "ctrl": "0x00000000"
+    }
+   ],
+   "faults_after": {
+    "GD_FAULT": "0x00000000",
+    "CTRL_FAULT": "0x80500000"
+   },
+   "pkpk": {
+    "CH1": 4.2,
+    "CH2": 4.0,
+    "CH3": 4.2
+   }
+  },
+  "t3_higher_speed": {
+   "duty": 300,
+   "tdiv": "100MS",
+   "state_trace": [
+    {
+     "t": 0.0,
+     "state": "0x00000003",
+     "gd": "0x00000000",
+     "ctrl": "0x80080000"
+    }
+   ],
+   "faults_after": {
+    "GD_FAULT": "0x00000000",
+    "CTRL_FAULT": "0x80080000"
+   },
+   "pkpk": {
+    "CH1": 4.0,
+    "CH2": 4.0,
+    "CH3": 4.0
+   }
+  }
+ },
+ "faults_final": {
+  "GD_FAULT": "0x00000000",
+  "CTRL_FAULT": "0x80080000"
+ }
+}
