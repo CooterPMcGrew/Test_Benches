@@ -2,3 +2,4 @@
 # commit summaries/manifests/logs only
 data/**/f_*.csv
 data/loop1_console.txt
+__pycache__/
